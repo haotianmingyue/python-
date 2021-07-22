@@ -33,6 +33,7 @@ time = tree_n.xpath('//div[@class="cnt"]/h3/text()')[0]
 
 # print(time)
 
+#转成字符串
 r_c = ''.join(r_c)
 
 #具体编码问题有待解决  保存文件中有   这是空格？？？
