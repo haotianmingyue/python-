@@ -22,6 +22,53 @@ def error():
     return driver.find_element_by_link_text('返回')
 
 
+#分析来看 决定活动领奖的 subtype 的值 88是神魔转盘  ，124 是开心娃娃机，56是登录有礼
+def shenmo_zhuanpan():
+    try:
+        url_sz = 'https://dld.qzapp.z.qq.com/qpet/cgi-bin/phonepk?zapp_uin=&sid=&channel=0&g_ut=1&cmd=newAct&subtype=88&op=1'
+        driver.get(url_sz)
+        back_home()
+    except:
+        print('神魔转盘出错')
+def cai_danshuang():
+    try:
+        #value 2是双数 1 是单数，这里默认全双
+        url_ds = 'https://dld.qzapp.z.qq.com/qpet/cgi-bin/phonepk?zapp_uin=&sid=&channel=0&g_ut=1&cmd=oddeven&value=2'
+        for i in range(5):
+            driver.get(url_ds)
+            sleep(1)
+        back_home()
+    except:
+        print('猜单双出错')
+
+
+def wawa_ji():
+    try:
+        url_wj = 'https://dld.qzapp.z.qq.com/qpet/cgi-bin/phonepk?zapp_uin=&sid=&channel=0&g_ut=1&cmd=newAct&subtype=124&op=1'
+        driver.get(url_wj)
+        back_home()
+    except:
+        print('开心娃娃机')
+
+def xianwu_xiuzhen(): #具体挑战还没做
+    try:
+        #领取活跃度80的次数
+        url_lc = 'https://dld.qzapp.z.qq.com/qpet/cgi-bin/phonepk?zapp_uin=&sid=&channel=0&g_ut=1&cmd=immortals&op=getreward&taskid=1'
+        driver.get(url_lc)
+
+    except:
+        print('仙武修真出错')
+
+def wulin():
+    try:
+        url_wl = 'https://dld.qzapp.z.qq.com/qpet/cgi-bin/phonepk?zapp_uin=&B_UID=0&sid=&channel=0&g_ut=1&cmd=fastSignWulin&ifFirstSign=1'
+        driver.get(url_wl)
+        #人满了点 继续报名
+        driver.find_element_by_link_text('继续报名').click()
+        back_home()
+    except:
+        print('武林大会出错')
+
 def lingjiang():
     try:
         # 1是小 2是中 3 是大 4是终极
@@ -600,5 +647,9 @@ if __name__ == '__main__':
     # shangdian_huanhun()
     # jiebai_zhengba()
     # mission()
-    lingjiang()
+    # lingjiang()
+    # wulin()
+    # wawa_ji()
+    # shenmo_zhuanpan()
+    cai_danshuang()
     # driver.get('https://dld.qzapp.z.qq.com/qpet/cgi-bin/phonepk?zapp_uin=&B_UID=0&sid=&channel=0&g_ut=1&cmd=broadcast')
